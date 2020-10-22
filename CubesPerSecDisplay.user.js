@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CPS Display
 // @namespace    AlienC4
-// @version      1.0.1
+// @version      1.0.2
 // @description  Adds cubes per second and other ascension info to the div at the top of the screen
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -25,14 +25,15 @@ let calcCTHps = (function () {
         let tess = meta[5];
         let cubes = meta[4];
         let time = player.ascensionCounter;
-        if (sec >= time && printPrevRun) {
+        if (time > 0 && sec >= time && printPrevRun) {
             console.log(`Cube Rate: ${format(cps, 4, true)}/s, Tess Rate: ${format(tps, 2, true)}/s, Hyper Rate: ${format(hps, 3, true)}/s, Cubes: ${format(cps * sec, 4, true)}, time: ${formatTimeShort(sec)}`);
         }
         cps = cubes / time;
         tps = tess / time;
         hps = hypers / time;
         sec = time;
-        document.getElementsByTagName("div")[2].textContent = `Cube Rate: ${format(cps, 4, true)}/s, Tess Rate: ${format(tps, 2, true)}/s, Hyper Rate: ${format(hps, 3, true)}/s, Cubes: ${format(cubes, 4, true)}, time: ${formatTimeShort(time)}`;
+        if (document.getElementsByTagName("div")[2].childElementCount === 0)
+            document.getElementsByTagName("div")[2].textContent = `Cube Rate: ${format(cps, 4, true)}/s, Tess Rate: ${format(tps, 2, true)}/s, Hyper Rate: ${format(hps, 3, true)}/s, Cubes: ${format(cubes, 4, true)}, time: ${formatTimeShort(time)}`;
     }
 
     return log;
