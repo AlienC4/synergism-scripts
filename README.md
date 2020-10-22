@@ -7,3 +7,6 @@ To install the scripts with Tampermonkey,
 2. Click on the script you want to install
 3. Click Raw. A new tab should open
 4. Click Install
+
+If you don't want to use Tampermonkey, you can simply copy paste the contents of 
+the file into the console
