@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         R8x25 Rate Logger
 // @namespace    AlienC4
-// @version      1.0
+// @version      1.0.1
 // @description  New and improved level logger for 8x25, now takes the cost increase into account
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/

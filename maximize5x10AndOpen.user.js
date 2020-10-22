@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         w5x10 Maximizer
 // @namespace    AlienC4
-// @version      1.2.4
+// @version      1.2.4.1
 // @description  Attempts to maximize the effect of opening cubes and buying w5x10 with them
 // @author       AlienC4
 // @coauthor     Dankaati, bgli100, Tree
