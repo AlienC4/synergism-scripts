@@ -1,8 +1,13 @@
-/*
- * New and improved level logger for 8x25, now takes the cost increase into account
- * (just paste and wait)
- * It will only log anything when the level changes
- */
+// ==UserScript==
+// @name         R8x25 Rate Logger
+// @namespace    AlienC4
+// @version      1.0
+// @description  New and improved level logger for 8x25, now takes the cost increase into account
+// @author       AlienC4
+// @match        https://pseudonian.github.io/SynergismOfficial/
+// @grant        none
+// ==/UserScript==
+
 let levelLog = (function () {
     let levels = player.researches[200];
     let prev_obt = 0
@@ -20,4 +25,4 @@ let levelLog = (function () {
 
     return log;
 })();
-let W = setInterval(levelLog, 1000);
+var levelLogger = setInterval(levelLog, 1000);

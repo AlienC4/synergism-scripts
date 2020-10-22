@@ -1,9 +1,19 @@
-let printPrevRun = true;
+// ==UserScript==
+// @name         CPS Display
+// @namespace    AlienC4
+// @version      1.0
+// @description  Adds cubes per second and other ascension info to the div at the top of the screen
+// @author       AlienC4
+// @match        https://pseudonian.github.io/SynergismOfficial/
+// @grant        none
+// ==/UserScript==
+
+var printPrevRun = true;
 /*
  * There's an empty div at the top of the screen
  * This puts the cps info into that previously empty space
  */
-let calcCTHps = (function () {
+var calcCTHps = (function () {
     let cps = 0;
     let tps = 0;
     let hps = 0;
@@ -27,4 +37,4 @@ let calcCTHps = (function () {
 
     return log;
 })();
-let handleCTHps = setInterval(calcCTHps, 1000);
+var handleCTHps = setInterval(calcCTHps, 1000);
