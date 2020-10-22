@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         w5x10 Maximizer
 // @namespace    AlienC4
-// @version      1.2.4
+// @version      1.2.5
 // @description  Attempts to maximize the effect of opening cubes and buying w5x10 with them
 // @author       AlienC4
 // @coauthor     Dankaati, bgli100, Tree
@@ -24,7 +24,7 @@ var blessing_weights = [null,
 
 // w5x10 maximizer for Synergism v2.0.5 by AlienC4
 // Usage: Just paste it in the console and call the function
-var maximize5x10AndOpen = (A_time_multi = 0, weights = blessing_weights) => {
+window.maximize5x10AndOpen = (A_time_multi = 0, weights = blessing_weights) => {
     // w5x10 Calculator v1.2.4 for Synergism v2.0.5 | Created by bgli100 | Reformatted by Tree#1019 | Added on by AlienC4 to support the maximizer | Bug fixes by Dankaati
     let positiveBonus = 0.5 + (cubeBonusMultiplier[9] - 1) + 0.0004 * player.cubeUpgrades[50]
     let extraPositive = 0.5 + 0.0004 * player.cubeUpgrades[50]
