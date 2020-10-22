@@ -25,4 +25,4 @@ let levelLog = (function () {
 
     return log;
 })();
-var levelLogger = setInterval(levelLog, 1000);
+window.levelLogger = setInterval(levelLog, 1000);

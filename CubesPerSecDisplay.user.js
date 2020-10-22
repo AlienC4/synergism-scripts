@@ -8,12 +8,12 @@
 // @grant        none
 // ==/UserScript==
 
-var printPrevRun = true;
+window.printPrevRun = true;
 /*
  * There's an empty div at the top of the screen
  * This puts the cps info into that previously empty space
  */
-var calcCTHps = (function () {
+let calcCTHps = (function () {
     let cps = 0;
     let tps = 0;
     let hps = 0;
@@ -37,4 +37,4 @@ var calcCTHps = (function () {
 
     return log;
 })();
-var handleCTHps = setInterval(calcCTHps, 1000);
+window.handleCTHps = setInterval(calcCTHps, 1000);
