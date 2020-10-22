@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         w5x10 Maximizer
 // @namespace    AlienC4
-// @version      1.2.4.1
+// @version      1.3.0
 // @description  Attempts to maximize the effect of opening cubes and buying w5x10 with them
 // @author       AlienC4
 // @coauthor     Dankaati, bgli100, Tree
@@ -113,7 +113,7 @@ window.maximize5x10AndOpen = (A_time_multi = 0, weights = blessing_weights) => {
         11: {name: "Tax Reduce", enable: true}
     }
     console.log(`The maximum bonus from both opening cubes and buying 5x10 is attained by opening ${100 - maxP}% and buying 5x10 with ${maxP}% of your cubes`)
-    console.log(`Opening ${format(player.wowCubes - meta[1])} cubes and buying ${lvls} w5x10 level${lvls === 1 ? "" : "s"}`);
+    console.log(`Opening ${format(total_cubes - meta[1])} cubes and buying ${lvls} w5x10 level${lvls === 1 ? "" : "s"}`);
     console.log("Blessing   | Open      | w5x10     | total");
     for (let i = 1; i <= 11; i++) {
         let open = 100 * (mul2[i] / mul1[i] - 1);
