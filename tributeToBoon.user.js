@@ -35,8 +35,13 @@ function replaceTribute(byStr = "boon") {
         let name = cubeUpgradeName[i]()
         cubeUpgradeName[i] = () => name.replace("tribute", byStr).replace("Tribute", capitalize(byStr))
     }
+    for (let i = 1; i < cubeUpgradeDescriptions.length; i++) {
+        let desc = cubeUpgradeDescriptions[i]()
+        cubeUpgradeDescriptions[i] = () => desc.replace("tribute", byStr)
+    }
     for (let i = 1; i < resdesc; i++) {
         resdesc[i] = resdesc[i].replace("tribute", byStr)
     }
 }
+window.replaceTribute = replaceTribute
 replaceTribute()
