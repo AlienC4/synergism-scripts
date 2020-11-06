@@ -81,7 +81,7 @@ let initFunc = function () {
         ascPlat.onclick = () => toggleAscStatPerSecond(4)
         ascStats.insertBefore(ascPlat, ascStats.children[3])
     }
-    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null) {
+    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null && player[Symbol.for("version")] === "2.0.6") {
         let ascPlat = document.getElementById("ascPlatonicStats")
         let ascPlatTot = document.createElement("span")
         ascPlatTot.setAttribute("id", "ascPlatTot")
@@ -117,6 +117,7 @@ let initFunc = function () {
     }
 
     let old = updateAscensionStats
+    let flag = false
     updateAscensionStats = function () {
         old()
         let sac = calculateAntSacrificeRewards()
@@ -125,6 +126,9 @@ let initFunc = function () {
             "ascOff": format(sac.offerings / player.antSacrificeTimerReal) + "/s"
         }
         if (document.getElementById("ascPlatonic").textContent === "") {
+            flag = true
+        }
+        if (flag) {
             let t = player.ascensionCounter
             let [platonic] = CalcCorruptionStuff().splice(7)
             fillers.ascPlatonic = format(platonic * (player.ascStatToggles[4] ? 1 : 1 / t), 5, true)
@@ -132,6 +136,26 @@ let initFunc = function () {
         for (const key of Object.keys(fillers)) {
             document.getElementById(key).textContent = fillers[key];
         }
+    }
+    if (document.getElementById("ascHyperStats") === null) {
+        let ascStats = document.getElementById("ascensionStats")
+        ascStats.style.margin = "0 auto -10px"
+        ascStats.style.width = "90%"
+        ascStats.children[0].style.width = "100%"
+        ascStats.children[0].style.display = "flex"
+        ascStats.children[0].style.justifyContent = "center"
+        ascStats.querySelectorAll("div>span:nth-child(-n+4)").forEach((elem) => elem.display = "flex")
+        ascStats.querySelectorAll("div>span:nth-child(4)").forEach((elem) => elem.style.width = "15%")
+        ascStats.querySelectorAll("div>span:nth-child(3)").forEach((elem) => elem.style.width = "10%")
+        ascStats.querySelectorAll("div>span:nth-child(2)").forEach((elem) => elem.style.width = "11%")
+        ascStats.querySelectorAll("div>span:nth-child(1)").forEach((elem) => elem.style.width = "13%")
+        ascStats.querySelectorAll("div>img").forEach((elem) => elem.style.marginLeft = "4px")
+        ascStats.querySelectorAll("img").forEach((elem) => {
+            elem.style.position = "relative";
+            elem.style.top = "3px";
+            elem.style.marginRight = "4px";
+        })
+        document.getElementById("ascObtStats").style.marginLeft = "4px";
     }
 }
 
