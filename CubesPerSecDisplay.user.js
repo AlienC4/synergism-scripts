@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CPS Display
 // @namespace    AlienC4
-// @version      1.1.0
+// @version      1.1.1
 // @description  Adds cubes per second and other ascension info to the div at the top of the screen
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -145,10 +145,10 @@ let initFunc = function () {
         ascStats.children[0].style.display = "flex"
         ascStats.children[0].style.justifyContent = "center"
         ascStats.querySelectorAll("div>span:nth-child(-n+4)").forEach((elem) => elem.display = "flex")
-        ascStats.querySelectorAll("div>span:nth-child(4)").forEach((elem) => elem.style.width = "15%")
+        ascStats.querySelectorAll("div>span:nth-child(4)").forEach((elem) => elem.style.width = "15.2%")
         ascStats.querySelectorAll("div>span:nth-child(3)").forEach((elem) => elem.style.width = "10%")
         ascStats.querySelectorAll("div>span:nth-child(2)").forEach((elem) => elem.style.width = "11%")
-        ascStats.querySelectorAll("div>span:nth-child(1)").forEach((elem) => elem.style.width = "13%")
+        ascStats.querySelectorAll("div>span:nth-child(1)").forEach((elem) => elem.style.width = "12.5%")
         ascStats.querySelectorAll("div>img").forEach((elem) => elem.style.marginLeft = "4px")
         ascStats.querySelectorAll("img").forEach((elem) => {
             elem.style.position = "relative";
