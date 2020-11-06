@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CPS Display
 // @namespace    AlienC4
-// @version      1.0.2
+// @version      1.0.9
 // @description  Adds cubes per second and other ascension info to the div at the top of the screen
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -40,3 +40,100 @@ let calcCTHps = (function () {
     return log;
 })();
 window.handleCTHps = setInterval(calcCTHps, 1000);
+
+toggleAscStatPerSecond = function (id) {
+    let unit = document.getElementById(`unit${id}`)
+    if (player.ascStatToggles[id]) {
+        player.ascStatToggles[id] = false;
+        if (unit)
+            unit.textContent = "/s";
+    } else {
+        player.ascStatToggles[id] = true;
+        if (unit)
+            unit.textContent = "";
+    }
+}
+let initFunc = function () {
+    if (player.ascStatToggles[4] === undefined)
+        player.ascStatToggles[4] = false
+    let ascStats = document.getElementById("ascensionStats")
+    if (ascStats.childElementCount === 1)
+        ascStats = ascStats.children[0]
+    if (document.getElementById("ascPlatonicStats") === null) {
+        let ascPlat = document.createElement("span")
+        ascPlat.setAttribute("id", "ascPlatonicStats")
+
+        let img = document.createElement("img")
+        img.setAttribute("src", "Pictures/Platonic%20Cube.png")
+        img.classList.add("corruptionImg")
+        ascPlat.appendChild(img)
+        let text = document.createElement("span")
+        text.setAttribute("id", "ascPlatonic")
+        text.style.color = "lightgoldenrodyellow"
+        ascPlat.appendChild(text)
+        let p = document.createTextNode(" P")
+        ascPlat.appendChild(p)
+        let unit = document.createElement("span")
+        unit.setAttribute("id", "unit4")
+        unit.textContent = player.ascStatToggles[4] ? "" : "/s"
+        ascPlat.appendChild(unit)
+
+        ascPlat.onclick = () => toggleAscStatPerSecond(4)
+        ascStats.insertBefore(ascPlat, ascStats.children[3])
+    }
+    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null) {
+        let ascPlat = document.getElementById("ascPlatonicStats")
+        let ascPlatTot = document.createElement("span")
+        ascPlatTot.setAttribute("id", "ascPlatTot")
+        ascPlatTot.style.margin = "0 5px"
+        ascPlatTot.style.color = "lightgoldenrodyellow"
+        ascPlat.appendChild(ascPlatTot)
+    }
+    if (document.getElementById("ascObtStats") === null) {
+        let ascObt = document.createElement("span")
+        ascObt.setAttribute("id", "ascObtStats")
+        let img = document.createElement("img")
+        img.setAttribute("src", "Pictures/Obtainium.png")
+        img.classList.add("corruptionImg")
+        ascObt.appendChild(img)
+        let text = document.createElement("span")
+        text.setAttribute("id", "ascObt")
+        text.style.color = "pink"
+        ascObt.appendChild(text)
+        ascStats.appendChild(ascObt)
+    }
+    if (document.getElementById("ascOffStats") === null) {
+        let ascOff = document.createElement("span")
+        ascOff.setAttribute("id", "ascOffStats")
+        let img = document.createElement("img")
+        img.setAttribute("src", "Pictures/Offering.png")
+        img.classList.add("corruptionImg")
+        ascOff.appendChild(img)
+        let text = document.createElement("span")
+        text.setAttribute("id", "ascOff")
+        text.style.color = "gold"
+        ascOff.appendChild(text)
+        ascStats.appendChild(ascOff)
+    }
+
+    let old = updateAscensionStats
+    updateAscensionStats = function () {
+        old()
+        let sac = calculateAntSacrificeRewards()
+        let fillers = {
+            "ascObt": format(sac.obtainium / player.antSacrificeTimerReal) + "/s",
+            "ascOff": format(sac.offerings / player.antSacrificeTimerReal) + "/s"
+        }
+        if (document.getElementById("ascPlatonic").textContent === "") {
+            let t = player.ascensionCounter
+            let [platonic] = CalcCorruptionStuff().splice(7)
+            fillers.ascPlatonic = format(platonic * (player.ascStatToggles[4] ? 1 : 1 / t), 5, true)
+        }
+        for (const key of Object.keys(fillers)) {
+            document.getElementById(key).textContent = fillers[key];
+        }
+    }
+}
+
+setTimeout(initFunc, 5000)
+setInterval(() => document.getElementById("ascPlatTot").textContent = `(${player.wowPlatonicCubes} P)`, 10000)
