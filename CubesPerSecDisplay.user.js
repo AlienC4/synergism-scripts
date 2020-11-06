@@ -81,7 +81,7 @@ let initFunc = function () {
         ascPlat.onclick = () => toggleAscStatPerSecond(4)
         ascStats.insertBefore(ascPlat, ascStats.children[3])
     }
-    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null && player[Symbol.for("version")] === "2.0.6") {
+    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null && player[Symbol.for("version")] === "2.0.0") {
         let ascPlat = document.getElementById("ascPlatonicStats")
         let ascPlatTot = document.createElement("span")
         ascPlatTot.setAttribute("id", "ascPlatTot")
