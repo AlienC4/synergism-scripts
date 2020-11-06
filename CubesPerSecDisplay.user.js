@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CPS Display
 // @namespace    AlienC4
-// @version      1.1.1
+// @version      1.1.2
 // @description  Adds cubes per second and other ascension info to the div at the top of the screen
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -89,6 +89,27 @@ let initFunc = function () {
         ascPlatTot.style.color = "lightgoldenrodyellow"
         ascPlat.appendChild(ascPlatTot)
     }
+    if (document.getElementById("ascTimeTakenStats") === null) {
+        let ascTime = document.createElement("span")
+        ascTime.setAttribute("id", "ascTimeTakenStats")
+        ascStats.insertBefore(ascTime, ascStats.children[4])
+        ascTime.appendChild(ascStats.children[5])
+        ascTime.appendChild(ascStats.children[5])
+    }
+    if (document.getElementById("ascC10CompletionsStats") === null) {
+        let ascC10 = document.createElement("span")
+        ascC10.setAttribute("id", "ascC10CompletionsStats")
+        ascStats.insertBefore(ascC10, ascStats.children[5])
+        ascC10.appendChild(ascStats.children[6])
+        ascC10.appendChild(ascStats.children[6])
+    }
+    if (document.getElementById("ascTimeFactorStats") === null) {
+        let ascTime = document.createElement("span")
+        ascTime.setAttribute("id", "ascTimeFactorStats")
+        ascStats.insertBefore(ascTime, ascStats.children[6])
+        ascTime.appendChild(ascStats.children[7])
+        ascTime.appendChild(ascStats.children[7])
+    }
     if (document.getElementById("ascObtStats") === null) {
         let ascObt = document.createElement("span")
         ascObt.setAttribute("id", "ascObtStats")
@@ -156,6 +177,10 @@ let initFunc = function () {
             elem.style.marginRight = "4px";
         })
         document.getElementById("ascObtStats").style.marginLeft = "4px";
+        document.getElementById("ascC10CompletionsStats").style.width = "4%";
+    } else if (player[Symbol.for("version")] === "2.0.0") {
+        let ascStats = document.getElementById("ascensionStats")
+        ascStats.querySelectorAll("div>span:nth-child(4)").forEach((elem) => elem.style.width = "15.2%")
     }
 }
 
