@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CPS Display
 // @namespace    AlienC4
-// @version      1.1.2
+// @version      1.1.3
 // @description  Adds cubes per second and other ascension info to the div at the top of the screen
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -81,7 +81,7 @@ let initFunc = function () {
         ascPlat.onclick = () => toggleAscStatPerSecond(4)
         ascStats.insertBefore(ascPlat, ascStats.children[3])
     }
-    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null && player[Symbol.for("version")] === "2.0.0") {
+    if (document.getElementById("ascPlatonicStats") && document.getElementById("ascPlatTot") === null && player[Symbol.for("version")] === "2.0.6") {
         let ascPlat = document.getElementById("ascPlatonicStats")
         let ascPlatTot = document.createElement("span")
         ascPlatTot.setAttribute("id", "ascPlatTot")
