@@ -29,6 +29,8 @@ function replaceTribute(byStr = "boon") {
         if (i === 12 && challengefocus === 12) {
             let g = document.getElementById("challengePer3").childNodes[0];
             g.textContent = g.textContent.replace("Tribute", capitalize(byStr))
+            let n = document.getElementById("challengeCurrent3");
+            n.textContent = "+" + format(CalcECC('ascension', player.challengecompletions[12])) + " additional Cube Tributes".replace("Tribute", capitalize(byStr))
         }
     }
     for (let i = 1; i < cubeUpgradeName.length; i++) {
@@ -42,6 +44,14 @@ function replaceTribute(byStr = "boon") {
     for (let i = 1; i < resdesc; i++) {
         resdesc[i] = resdesc[i].replace("tribute", byStr)
     }
+    let statOff = document.getElementById("offeringMultiplierStats")
+    for (let s of statOff.children) {
+        s.childNodes[0].textContent = s.childNodes[0].textContent.replace("Tribute", capitalize(byStr));
+    }
+    document.getElementById("tesseractExpository1").textContent = document.getElementById("tesseractExpository1").textContent.replace("tribute", byStr)
+    document.getElementById("cubeBlessingsTotal").innerHTML = document.getElementById("cubeBlessingsTotal").innerHTML.replace("Tribute", capitalize(byStr))
+    document.getElementById("switchCubeSubTab1").innerHTML = document.getElementById("switchCubeSubTab1").textContent.replace("Tribute", capitalize(byStr))
 }
+
 window.replaceTribute = replaceTribute
 replaceTribute()
