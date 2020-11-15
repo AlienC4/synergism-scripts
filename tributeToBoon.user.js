@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tribute to Boon
 // @namespace    AlienC4
-// @version      1.0
+// @version      1.1
 // @description  Renames the tributes to boons
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
@@ -49,7 +49,7 @@ function replaceTribute(byStr = "boon") {
         s.childNodes[0].textContent = s.childNodes[0].textContent.replace("Tribute", capitalize(byStr));
     }
     document.getElementById("tesseractExpository1").textContent = document.getElementById("tesseractExpository1").textContent.replace("tribute", byStr)
-    document.getElementById("cubeBlessingsTotal").innerHTML = document.getElementById("cubeBlessingsTotal").innerHTML.replace("Tribute", capitalize(byStr))
+    document.getElementById("cubeBlessingsTotal").childNodes[2].textContent = document.getElementById("cubeBlessingsTotal").childNodes[2].textContent.replace("Tribute", capitalize(byStr))
     document.getElementById("switchCubeSubTab1").innerHTML = document.getElementById("switchCubeSubTab1").textContent.replace("Tribute", capitalize(byStr))
 }
 
