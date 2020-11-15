@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tribute to Boon
 // @namespace    AlienC4
-// @version      0.9
+// @version      1.0
 // @description  Renames the tributes to boons
 // @author       AlienC4
 // @match        https://pseudonian.github.io/SynergismOfficial/
